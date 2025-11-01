@@ -1,0 +1,5 @@
+domain,var,type,required,allowed_values,regex
+sdtm_dm,USUBJID,character,TRUE,,
+sdtm_dm,SEX,character,TRUE,M|F|U,
+sdtm_ae,AESEV,character,FALSE,MILD|MODERATE|SEVERE,
+sdtm_ae,AESTDTC,character,TRUE,,

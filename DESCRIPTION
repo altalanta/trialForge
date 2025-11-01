@@ -1,0 +1,15 @@
+Package: trialforgeR
+Title: Spec-Driven Validation Utilities for Clinical Trial Data
+Version: 0.1.0
+Authors@R: person(given = "Codex", family = "Assistant", email = "codex@example.com", role = c("aut", "cre"))
+Description: Provides spec-driven validation helpers and reporting tools for synthetic SDTM and ADaM style datasets.
+License: MIT + file LICENSE
+URL: https://github.com/codex-assistant/trialforgeR
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.1
+Depends: R (>= 4.2)
+Imports: readr, dplyr, tidyr, purrr, stringr, tibble, glue, rlang, cli, jsonlite, rmarkdown, knitr, DT, shiny, fs, yaml, reticulate
+Suggests: testthat (>= 3.0.0), covr, lintr, styler, rmarkdown, pkgdown
+Config/testthat/edition: 3
+LazyData: true

@@ -1,0 +1,9 @@
+Requirement_ID,Description,Implemented_In,Test_File,Evidence
+REQ-001,Spec files are parsed with correct typing,R/utils_spec.R:testthat(read_validation_spec),tests/testthat/test_spec_parsing.R,Test log
+REQ-002,Core validator detects missing required variables,R/validators_core.R:validate_required_vars,tests/testthat/test_core_validators.R,Test log
+REQ-003,Core validator enforces data types,R/validators_core.R:validate_types,tests/testthat/test_core_validators.R,Test log
+REQ-004,Core validator enforces value sets,R/validators_core.R:validate_value_sets,tests/testthat/test_core_validators.R,Test log
+REQ-005,SDTM DM USUBJID must be unique,R/validators_sdtm.R:check_sdtm_dm_unique_usubjid,tests/testthat/test_sdtm_rules.R,Test log
+REQ-006,SDTM AE severity must be within allowed values,R/validators_sdtm.R:check_sdtm_ae_sev_values,tests/testthat/test_sdtm_rules.R,Test log
+REQ-007,QC report is generated from validation results,R/report_qc.R:generate_qc_report,tests/testthat/test_report_snapshot.R,Rendered HTML
+REQ-008,Integrated validation orchestrates core and domain rules,R/report_qc.R:trialforge_validate,tests/testthat/test_core_validators.R,Combined tibble
