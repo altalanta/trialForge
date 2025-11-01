@@ -1,0 +1,40 @@
+---
+title: "Building Validation Specifications"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Building Validation Specifications}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+library(trialforgeR)
+```
+
+Validation behaviour in `trialforgeR` is driven by a CSV specification. The
+required columns are:
+
+- `domain`: Domain identifier (e.g., `sdtm_dm`).
+- `var`: Variable name in the dataset.
+- `type`: Expected type (`character`, `numeric`, `integer`, or `date`).
+- `required`: `TRUE`/`FALSE` flag indicating whether the variable must be
+  present with non-missing values.
+- `allowed_values`: Optional pipe-separated list of permitted values.
+- `regex`: Optional regular expression applied to non-missing values.
+
+```{r show-spec}
+spec <- read_validation_spec()
+knitr::kable(spec, caption = "Example validation specification")
+```
+
+Allowed value sets are parsed into list-columns, enabling downstream validators
+to reuse the configuration without additional transformation.
+
+```{r list-values}
+spec$allowed_values
+```
+
+When introducing new domains or rules, add corresponding rows to the specification
+and extend domain-specific validators where required. Unit tests should assert
+both passes and seeded failures to maintain confidence in the validation suite.

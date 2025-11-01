@@ -1,0 +1,43 @@
+---
+title: "trialforgeR Introduction"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{trialforgeR Introduction}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+library(trialforgeR)
+```
+
+The `trialforgeR` package provides lightweight, spec-driven validation utilities
+for synthetic clinical datasets. This vignette demonstrates how to evaluate the
+packaged sample data against the bundled specification.
+
+```{r load-samples}
+data_files <- list(
+  sdtm_dm = system.file("extdata/sample_data/sdtm_dm.csv", package = "trialforgeR"),
+  sdtm_ae = system.file("extdata/sample_data/sdtm_ae.csv", package = "trialforgeR"),
+  adam_adae = system.file("extdata/sample_data/adam_adae.csv", package = "trialforgeR")
+)
+
+results <- trialforge_validate(data_files)
+head(results)
+```
+
+```{r summary}
+summary_results <- dplyr::count(results, status)
+summary_results
+```
+
+You can also generate an HTML QC report directly.
+
+```{r eval=FALSE}
+report_path <- generate_qc_report(results, out_file = "qc_report.html")
+report_path
+```
+
+The same validation engine powers the Shiny app and CLI interface included with
+this package, supporting both interactive and automated workflows.
